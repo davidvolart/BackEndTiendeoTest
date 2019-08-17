@@ -3,6 +3,7 @@ var app = express();
 var getRawBody = require('raw-body')
 var contentType = require('content-type')
 const Drone = require('./drone');
+const Area = require('./area');
 
 
 app.use(function (req, res, next) {
@@ -18,13 +19,32 @@ app.use(function (req, res, next) {
 })
 
 app.post('/', function (req, res) {
-    const drone = new Drone();
-
+    
     ordenes = String(req.text).split("\n");
+
     console.log(ordenes);
+    for (i=0;i<ordenes.length;i++){
+      if(i==0){
+        const x = ordenes[i].substring(0,1);
+        const y = ordenes[i].substring(2,3);
+        const area = new Area(x,y);
+      }else if(i%2==1){
+        let x = ordenes[i].substring(0,1);
+        let y = ordenes[i].substring(2,3);
+        let o = ordenes[i].substring(4,5);
+        let drone = new Drone(x,y,o);
+      }else{
+        for(c=0;c<ordenes[i].length;c++){
+          //drone.move(ordenes[i].substring(c,c+1));
+          console.log(ordenes[i].substring(c,c+1));
+        }
+        drone.calculate();
+      }
+    }
+
     
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(3001, function () {
+  console.log('Example app listening on port 3001!');
 });
