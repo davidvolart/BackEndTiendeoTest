@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 app.post('/', function (req, res) {
     
     ordenes = String(req.text).split("\n");
-
+    let drone;
     console.log(ordenes);
     for (i=0;i<ordenes.length;i++){
       if(i==0){
@@ -32,17 +32,16 @@ app.post('/', function (req, res) {
         let x = ordenes[i].substring(0,1);
         let y = ordenes[i].substring(2,3);
         let o = ordenes[i].substring(4,5);
-        let drone = new Drone(x,y,o);
+        drone = new Drone(x,y,o);
       }else{
         for(c=0;c<ordenes[i].length;c++){
-          //drone.move(ordenes[i].substring(c,c+1));
-          console.log(ordenes[i].substring(c,c+1));
+          drone.move(ordenes[i].substring(c,c+1));
+          //console.log(ordenes[i].substring(c,c+1));
         }
-        drone.calculate();
+        console.log(drone.calculate());
       }
-    }
+    } 
 
-    
 });
 
 app.listen(3001, function () {

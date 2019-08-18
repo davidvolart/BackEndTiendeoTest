@@ -1,7 +1,9 @@
 class Area {
     constructor(x,y) {
-        this.x = x;
-        this.y = y;
+        this.xInicial = 0;
+        this.yInicial = 0;
+        this.xFinal = x;
+        this.yFinal = y;
     }
   
     getX(){
