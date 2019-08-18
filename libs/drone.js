@@ -67,6 +67,11 @@ class Drone {
         return this.x + ' ' +  this.y + ' ' + this.o;
     }
 
+    returnHome(x,y){
+        this.x= x;
+        this.y= y;
+    }
+
 }
   
   module.exports = Drone
