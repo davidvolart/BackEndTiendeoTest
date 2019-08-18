@@ -1,6 +1,7 @@
 class Drone {
 
-    constructor(x,y,o) {
+    constructor(area,x,y,o) {
+        this.area= area;
         this.o = o;
         this.x= x;
         this.y= y;
@@ -9,15 +10,41 @@ class Drone {
     }
   
     move(orden){
-      if(isNaN(orden) && this.isValidRotation(orden)){
+      if(this.isValidRotation(orden)){
         this.rotate(orden);
-      }else{
-        
+      }else if(orden==="M"){
+        this.proceedMovement();
       }
     }
 
     isValidRotation(rotation){
         return this.rotations.includes(rotation);
+    }
+
+    proceedMovement(){
+        
+        switch(this.o){
+            case "N":
+                if(this.y < this.area.getY()){
+                    this.y=parseInt(this.y)+1;
+                }
+            break;
+            case "S":
+                if(this.y > 0){
+                    this.y=parseInt(this.y)-1;
+                }
+            break;
+            case "E":
+                if(this.x < this.area.getX()){
+                    this.x = parseInt(this.x)+1;
+                }
+            break;
+            case "O":
+                if(this.x > 0){
+                    this.x = parseInt(this.x)-1;
+                }
+            break;
+        }
     }
 
     rotate(rotation){
@@ -40,6 +67,6 @@ class Drone {
         return this.x + ' ' +  this.y + ' ' + this.o;
     }
 
-  }
+}
   
   module.exports = Drone

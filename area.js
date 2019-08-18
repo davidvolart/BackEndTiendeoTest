@@ -1,17 +1,23 @@
 class Area {
     constructor(x,y) {
-        this.xInicial = 0;
-        this.yInicial = 0;
         this.xFinal = x;
         this.yFinal = y;
     }
+
+    getXInicial(){
+        return this.xInicial;
+    }
   
+    getYInicial(){
+        return this.yInicial;
+    }
+
     getX(){
-        return this.x;
+        return this.xFinal;
     }
 
     getY(){
-        return this.y;
+        return this.yFinal;
     }
 
   }
