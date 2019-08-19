@@ -1,15 +1,8 @@
 class Area {
+
     constructor(x,y) {
         this.xFinal = x;
         this.yFinal = y;
-    }
-
-    getXInicial(){
-        return this.xInicial;
-    }
-  
-    getYInicial(){
-        return this.yInicial;
     }
 
     getX(){
@@ -18,6 +11,14 @@ class Area {
 
     getY(){
         return this.yFinal;
+    }
+
+    getXInitial(){
+        return 0;
+    }
+  
+    getYInitial(){
+        return 0;
     }
 
   }

@@ -134,6 +134,31 @@ describe("Mixing rotate and movement by method move", () => {
     });
 });
 
+describe("Returning home", () => {
+
+    let area = new Area(5,5);
+    let drone = new Drone(area,4,4,'N');
+    let x = drone.x;
+    let y = drone.y;
+    let o = drone.o;
+    drone.move("M");
+    drone.move("M");
+    drone.move("L");
+    drone.move("A");
+    drone.move("M");
+    drone.move("M");
+    drone.move("F");
+    drone.returnHome(x,y,o);
+
+    it("should have the same position and orientation at the end that when it was created", () => {
+      expect(drone.x).to.equal(x);
+      expect(drone.y).to.equal(y);
+      expect(drone.o).to.equal(o);
+    });
+});
+
+
+
 
 
 

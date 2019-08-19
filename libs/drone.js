@@ -30,7 +30,7 @@ class Drone {
                 }
             break;
             case "S":
-                if(this.y > 0){
+                if(this.y > this.area.getYInitial()){
                     this.y=parseInt(this.y)-1;
                 }
             break;
@@ -40,7 +40,7 @@ class Drone {
                 }
             break;
             case "O":
-                if(this.x > 0){
+                if(this.x > this.area.getYInitial()){
                     this.x = parseInt(this.x)-1;
                 }
             break;
@@ -49,16 +49,15 @@ class Drone {
 
     rotate(rotation){
         let index = this.direction.indexOf(this.o);
+
         if(index != -1){
-            if(index==3 && rotation==="R"){
-                index=-1;
-            }else if(index==0 && rotation==="L"){
-                index=4;
-            }
             if(rotation==="R"){
-                this.o=this.direction[index+1];
-            }else{
-                this.o=this.direction[index-1];
+                this.o = this.direction[(index+1)%this.direction.length];
+            }else{ 
+                if(index==0){
+                    index=4;
+                }
+                this.o = this.direction[index-1];
             }
         }
     }
@@ -67,9 +66,10 @@ class Drone {
         return this.x + ' ' +  this.y + ' ' + this.o;
     }
 
-    returnHome(x,y){
+    returnHome(x,y,o){
         this.x= x;
         this.y= y;
+        this.o= o;
     }
 
 }
