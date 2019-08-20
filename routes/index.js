@@ -8,7 +8,7 @@ app.post('/', function (req, res) {
     let drone;
     let area,x,y,o;
     
-    //console.log(ordenes);
+    
     for (i=0;i<ordenes.length;i++){
       
         if(i==0){
