@@ -8,7 +8,7 @@ app.post('/', function (req, res) {
     let drone;
     let area,x,y,o;
     
-    console.log(ordenes);
+    //console.log(ordenes);
     for (i=0;i<ordenes.length;i++){
       
         if(i==0){
@@ -41,11 +41,12 @@ app.post('/', function (req, res) {
             drone.move(ordenes[i].substring(c,c+1));
             }
 
-            console.log(drone.calculate());
-            drone.returnHome(x,y,o);
-            console.log(drone.calculate());
+            res.write(drone.calculate());
+            res.write('\n');
+            drone.returnHome(x,y,o); 
         }
     } 
+    res.end();
 });
 
 
