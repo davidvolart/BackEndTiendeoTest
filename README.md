@@ -19,3 +19,9 @@ The aim of this project is to control drones which first of all need to receive 
  Postman
  
  Using Visual Studio as IDE
+ 
+ ## Run Test
+ 
+ cd tests
+ 
+ mocha test.js
